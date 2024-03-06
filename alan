@@ -1,0 +1,28 @@
+# ventas.py
+
+class Ventas:
+    def __init__(self):
+        self.ventas = []
+
+    def registrar_venta(self, producto, cantidad, precio_unitario):
+        self.ventas.append({
+            'producto': producto,
+            'cantidad': cantidad,
+            'precio_unitario': precio_unitario
+        })
+
+    def calcular_ingresos_totales(self):
+        ingresos_totales = sum(venta['cantidad'] * venta['precio_unitario'] for venta in self.ventas)
+        return ingresos_totales
+
+    def generar_reporte_ventas(self):
+        print("Reporte de Ventas:")
+        for venta in self.ventas:
+            print(f"Producto: {venta['producto']}, Cantidad: {venta['cantidad']}, Precio Unitario: {venta['precio_unitario']}")
+
+# Ejemplo de Uso
+ventas = Ventas()
+ventas.registrar_venta("Smartphone", 10, 500)
+ventas.registrar_venta("Tablet", 5, 300)
+ventas.generar_reporte_ventas()
+print("Ingresos Totales:", ventas.calcular_ingresos_totales())
